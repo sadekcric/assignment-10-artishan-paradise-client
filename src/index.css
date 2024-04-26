@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.goldenBG {
+  background-color: #af8260;
+}
+
+.goldenBG2 {
+  background-color: #e4c59e;
+}
+
+.goldenText {
+  color: #561c24;
+}
+
+.goldenBorder {
+  border-color: #af8260;
+}

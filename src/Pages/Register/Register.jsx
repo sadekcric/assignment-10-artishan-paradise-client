@@ -94,7 +94,7 @@ const Register = () => {
               className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
             />
           </div>
-          <button className="block w-full p-3 text-center rounded-sm dark:text-gray-50 dark:bg-violet-600 font-semibold bg-blue-400 text-white">
+          <button className="block w-full p-3 text-center rounded-sm dark:text-gray-50 dark:bg-violet-600 font-semibold goldenBG shadow-lg  goldenText">
             Register
           </button>
         </form>
@@ -106,7 +106,7 @@ const Register = () => {
 
         <p className="text-xs text-center sm:px-6 dark:text-gray-600">
           Don't have an account?
-          <Link to="/login" className="underline dark:text-gray-800 text-blue-400 font-semibold">
+          <Link to="/login" className="underline dark:text-gray-800 text-blue-500 font-bold">
             Sign up
           </Link>
         </p>

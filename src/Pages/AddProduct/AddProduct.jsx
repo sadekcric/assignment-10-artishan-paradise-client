@@ -23,7 +23,7 @@ const AddProduct = () => {
 
     const product = { name, price, rating, category, customization, stock, details, photo, processingTime };
 
-    fetch(`http://localhost:5000/products`, {
+    fetch(`https://artisan-paradise-server.vercel.app/products`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
