@@ -156,11 +156,11 @@ const Nav = () => {
 
                 {/* User Profile */}
                 <div
-                  className={`goldenBG z-50 min-h-[200px] absolute ${
-                    profileActive ? "translate-y-[275px] opacity-100" : "-translate-y-72 opacity-0"
+                  className={`goldenBG py-10 z-50 min-h-[200px] absolute ${
+                    profileActive ? "translate-y-[300px] opacity-100" : "-translate-y-72 opacity-0"
                   } transition duration-1000 ease-in-out px-10 text-white rounded-b-lg right-0 pb-5 min-w-[400px]`}
                 >
-                  <h2 className="text-xl font-semibold text-center border-b-2 border-green-900 mb-3 ">USER</h2>
+                  <h2 className="text-xl font-semibold text-center border-b-2 border-[#e4c59e] mb-5 ">USER</h2>
                   <ul className="space-y-3">
                     <li>
                       <img className="w-40 h-40 mx-auto rounded-full" src={user.photoURL || defaultProfile} alt="" />
@@ -221,13 +221,49 @@ const Nav = () => {
           {/* for Mobile */}
 
           {user && (
-            <div className="w-8 h-8 lg:hidden self-center  rounded-full bg-slate-100 z-100">
-              <img
-                src={user?.photoURL || defaultProfile}
-                alt=""
-                className="w-full h-full object-cover object-center rounded-full"
-                data-tooltip-id="my-tooltip-1"
-              />
+            <div className="flex lg:hidden items-center gap-1 relative">
+              <div
+                onClick={() => setProfileActive(!profileActive)}
+                className="w-8 h-8 self-center cursor-pointer rounded-full bg-slate-100"
+              >
+                <img
+                  src={user?.photoURL || defaultProfile}
+                  alt=""
+                  className="w-full h-full object-cover object-center rounded-full"
+                  data-tooltip-id="my-tooltip-1"
+                />
+              </div>
+
+              {/* User Profile */}
+              <div
+                className={`goldenBG py-5 z-50 min-h-[200px] -right-16  absolute ${
+                  profileActive ? "translate-y-[276px] opacity-100" : "-translate-y-72 opacity-0"
+                } transition duration-1000 ease-in-out px-3 text-white rounded-b-lg right-0 pb-5 min-w-[250px]`}
+              >
+                <h2 className="text-xl font-semibold text-center border-b-2 border-[#e4c59e] mb-5 ">USER</h2>
+                <ul className="space-y-3">
+                  <li>
+                    <img className="w-32 h-32 mx-auto rounded-full" src={user.photoURL || defaultProfile} alt="" />
+                  </li>
+                  <li className="font-semibold text-center text-xl">Hi! {user.displayName}</li>
+                  <li>
+                    <ul className="goldenBG2 goldenText px-6 py-6 rounded-xl shadow-lg">
+                      <li className="border-b-2 goldenBorder px-2 pt-3 text-md font-semibold">
+                        <Link to="/profile">Profile</Link>
+                      </li>
+
+                      <li className="border-b-2 goldenBorder px-2 pt-3 text-md font-semibold">
+                        <Link to="/myArt">My Art & Craft</Link>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button onClick={() => firebaseLogOut()} className="self-center w-full shadow-2xl py-3 rounded font-semibold">
+                      Sign out
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </div>
           )}
 
