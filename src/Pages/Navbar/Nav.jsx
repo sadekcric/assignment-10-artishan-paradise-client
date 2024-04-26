@@ -47,16 +47,31 @@ const Nav = () => {
 
       <li>
         <NavLink
-          to="/add"
+          to="/allArt"
           className={({ isActive }) =>
             isActive
-              ? "goldenBG2 border-2 goldenBorder  rounded-sm px-6 py-3 font-semibold goldenText"
+              ? "goldenBG2 border-2 goldenBorder rounded-sm px-6 py-3 font-semibold goldenText"
               : "border-b-2 goldenBorder px-6 py-3 font-semibold goldenText"
           }
         >
-          Add Product
+          All Art & craft
         </NavLink>
       </li>
+
+      {user && (
+        <li>
+          <NavLink
+            to="/add"
+            className={({ isActive }) =>
+              isActive
+                ? "goldenBG2 border-2 goldenBorder  rounded-sm px-6 py-3 font-semibold goldenText"
+                : "border-b-2 goldenBorder px-6 py-3 font-semibold goldenText"
+            }
+          >
+            Add Product
+          </NavLink>
+        </li>
+      )}
     </>
   );
 
@@ -101,7 +116,7 @@ const Nav = () => {
                           : "border-b-2 goldenBorder px-6 py-3 font-semibold goldenText"
                       }
                     >
-                      Sign In
+                      Login
                     </NavLink>
                   </li>
                   <li>
@@ -113,7 +128,7 @@ const Nav = () => {
                           : "border-b-2 goldenBorder px-6 py-3 font-semibold goldenText"
                       }
                     >
-                      Sign Up
+                      Register
                     </NavLink>
                   </li>
                 </>
@@ -123,19 +138,25 @@ const Nav = () => {
 
           <div className="hidden lg:block">
             {user ? (
-              <button onClick={handleLogOut} className="self-center px-8 py-3 border-2 goldenBorder hover:goldenBG2 rounded-md goldenText">
+              <button
+                onClick={handleLogOut}
+                className="self-center px-8 py-3 border-2 goldenBorder transition hover:bg-yellow-600 rounded-md goldenText"
+              >
                 Log Out
               </button>
             ) : (
               <div className="items-center font-semibold  gap-5 flex-shrink-0 hidden lg:flex goldenText">
-                <Link to="login" className="self-center transition px-8 py-3 border-2 goldenBorder hover:goldenBG2 rounded-md">
-                  Sign in
+                <Link
+                  to="login"
+                  className="self-center transition px-8 py-3 border-2 goldenBorder hover:text-white hover:bg-yellow-600 rounded-md"
+                >
+                  Login
                 </Link>
                 <Link
                   to="register"
-                  className="self-center transition border-2 goldenBorder hover:goldenBG2  rounded-md px-8 py-3 font-semibold dark:bg-violet-600 dark:text-gray-50"
+                  className="self-center transition border-2 goldenBorder hover:text-white hover:bg-yellow-600  rounded-md px-8 py-3 font-semibold dark:bg-violet-600 dark:text-gray-50"
                 >
-                  Sign up
+                  Register
                 </Link>
               </div>
             )}

@@ -1,10 +1,14 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { CommonContext } from "../../Layout/CommonRoute";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Login = () => {
-  const { firebaseSignIn, setUser } = useContext(CommonContext);
+  const { firebaseSignIn, setUser, user } = useContext(CommonContext);
+  const [hidden, setHidden] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -12,8 +16,18 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
+    if (user) {
+      return Swal.fire({
+        title: "Error!",
+        text: "You are Already Log in. For new Log in Please Sign out.",
+        icon: "error",
+        confirmButtonText: "Back",
+      });
+    }
+
     firebaseSignIn(email, password)
       .then(({ user }) => {
+        navigate(location?.state ? location.state : "/");
         setUser(user);
 
         Swal.fire({
@@ -44,17 +58,22 @@ const Login = () => {
             />
           </div>
 
-          <div className="space-y-1 text-sm">
+          <div className="space-y-1 text-sm relative">
             <label htmlFor="password" className="block dark:text-gray-600">
               Your Password:
             </label>
             <input
-              type="password"
+              type={hidden ? "text" : "password"}
               name="password"
               id="password"
               placeholder=""
               className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
             />
+
+            <div onClick={() => setHidden(!hidden)} className="absolute top-9 right-5 text-xl cursor-pointer">
+              {hidden ? <FaRegEye /> : <FaRegEyeSlash />}
+            </div>
+
             <div className="flex justify-end text-xs dark:text-gray-600">
               <a rel="noopener noreferrer" href="#">
                 Forgot Password?
@@ -63,7 +82,7 @@ const Login = () => {
           </div>
 
           <button className="block w-full p-3 text-center rounded-sm dark:text-gray-50 dark:bg-violet-600 goldenBG shadow-lg  goldenText  ">
-            Sign in
+            Login
           </button>
         </form>
 
@@ -97,7 +116,7 @@ const Login = () => {
         <p className="text-xs text-center sm:px-6 dark:text-gray-600">
           Don't have an account?
           <Link to="/register" className="underline dark:text-gray-800 text-blue-400 font-semibold">
-            Sign up
+            Register
           </Link>
         </p>
       </div>

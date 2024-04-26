@@ -1,11 +1,15 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CommonContext } from "../../Layout/CommonRoute";
 import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
 import { Link } from "react-router-dom";
+import { FaRegEye } from "react-icons/fa";
+import { FaRegEyeSlash } from "react-icons/fa";
 
 const Register = () => {
-  const { firebaseRegister, firebaseLogOut } = useContext(CommonContext);
+  const { firebaseRegister, firebaseLogOut, user } = useContext(CommonContext);
+  const [hidden1, setHidden1] = useState(false);
+  const [hidden2, setHidden2] = useState(false);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -13,9 +17,47 @@ const Register = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    const conformPassword = form.conformPassword.value;
     const name = form.name.value;
     const photo = form.photo.value;
     // console.log(name, email, password);
+
+    if (user) {
+      return Swal.fire({
+        title: "Error!",
+        text: "You are Already Log in. For new Register Please Sign out.",
+        icon: "error",
+        confirmButtonText: "Back",
+      });
+    }
+
+    if (password !== conformPassword) {
+      return Swal.fire({
+        title: "Error!",
+        text: "Password Not match!",
+        icon: "error",
+        confirmButtonText: "Back",
+      });
+    }
+
+    if (password.length < 6) {
+      return Swal.fire({
+        title: "Error!",
+        text: "Password must be up to 6 correcter!",
+        icon: "error",
+        confirmButtonText: "Back",
+      });
+    }
+
+    if (!/[A-Z]/.test(password) || !/[a-z]/.test(password)) {
+      // return toast.error("Password must be a Uppercase & Lowercase!");
+      return Swal.fire({
+        title: "Error!",
+        text: "Password must be a Uppercase & Lowercase!",
+        icon: "error",
+        confirmButtonText: "Back",
+      });
+    }
     firebaseRegister(email, password)
       .then(({ user }) => {
         updateProfile(user, {
@@ -53,6 +95,7 @@ const Register = () => {
               id="name"
               placeholder=""
               className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
+              required
             />
           </div>
 
@@ -66,20 +109,42 @@ const Register = () => {
               id="email"
               placeholder=""
               className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
+              required
             />
           </div>
 
-          <div className="space-y-1 text-sm">
+          <div className="space-y-1 text-sm relative">
             <label htmlFor="password" className="block dark:text-gray-600">
               Password
             </label>
             <input
-              type="password"
+              type={hidden1 ? "text" : "password"}
               name="password"
               id="password"
               placeholder=""
               className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
+              required
             />
+            <div onClick={() => setHidden1(!hidden1)} className="absolute top-9 right-5 text-xl cursor-pointer">
+              {hidden1 ? <FaRegEye /> : <FaRegEyeSlash />}
+            </div>
+          </div>
+
+          <div className="space-y-1 text-sm relative">
+            <label htmlFor="conformPassword" className="block dark:text-gray-600 ">
+              Conform Password
+            </label>
+            <input
+              type={hidden2 ? "text" : "password"}
+              name="conformPassword"
+              id="conformPassword"
+              placeholder=""
+              className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
+              required
+            />
+            <div onClick={() => setHidden2(!hidden2)} className="absolute top-9 right-5 text-xl cursor-pointer">
+              {hidden2 ? <FaRegEye /> : <FaRegEyeSlash />}
+            </div>
           </div>
 
           <div className="space-y-1 text-sm">
@@ -98,6 +163,7 @@ const Register = () => {
             Register
           </button>
         </form>
+
         <div className="flex items-center pt-4 space-x-1">
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-300"></div>
 
@@ -105,9 +171,9 @@ const Register = () => {
         </div>
 
         <p className="text-xs text-center sm:px-6 dark:text-gray-600">
-          Don't have an account?
+          Have you Already an account?
           <Link to="/login" className="underline dark:text-gray-800 text-blue-500 font-bold">
-            Sign up
+            Login
           </Link>
         </p>
       </div>
