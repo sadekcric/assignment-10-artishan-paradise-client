@@ -16,12 +16,12 @@ const AddProduct = () => {
     const stock = form.stock.value;
     const details = form.details.value;
     const photo = form.photo.value;
-    // const displayName = user.displayName;
-    // const email = user.email;
+    const displayName = user.displayName;
+    const email = user.email;
     const processingTime = form.processingTime.value;
-    // const photoURL = user.photoURL;
+    const photoURL = user.photoURL;
 
-    const product = { name, price, rating, category, customization, stock, details, photo, processingTime };
+    const product = { name, price, rating, category, customization, stock, details, photo, processingTime, displayName, email, photoURL };
 
     fetch(`https://artisan-paradise-server.vercel.app/products`, {
       method: "POST",

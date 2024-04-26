@@ -71,7 +71,7 @@ const Nav = () => {
                 : "border-b-2 goldenBorder px-6 py-3 font-semibold goldenText"
             }
           >
-            Add Product
+            Add Craft
           </NavLink>
         </li>
       )}

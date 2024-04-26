@@ -5,10 +5,22 @@ import { CommonContext } from "../../Layout/CommonRoute";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Login = () => {
-  const { firebaseSignIn, setUser, user } = useContext(CommonContext);
+  const { firebaseSignIn, setUser, user, loader, setLoader } = useContext(CommonContext);
   const [hidden, setHidden] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+
+  if (loader) {
+    return (
+      <div className="fixed top-[50%] left-[50%] z-50">
+        <div className="flex items-center justify-center space-x-2">
+          <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-600 goldenBG"></div>
+          <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-600 goldenBG2"></div>
+          <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-600 goldenBG"></div>
+        </div>
+      </div>
+    );
+  }
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -17,6 +29,7 @@ const Login = () => {
     const password = form.password.value;
 
     if (user) {
+      setLoader(false);
       return Swal.fire({
         title: "Error!",
         text: "You are Already Log in. For new Log in Please Sign out.",
@@ -38,7 +51,15 @@ const Login = () => {
         });
         form.reset();
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setLoader(false);
+        return Swal.fire({
+          title: "Error!",
+          text: err.message,
+          icon: "error",
+          confirmButtonText: "Back",
+        });
+      });
   };
   return (
     <div className="min-h-[calc(100vh-100px)] flex justify-center items-center">

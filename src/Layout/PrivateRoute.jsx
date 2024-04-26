@@ -9,7 +9,13 @@ const PrivateRoute = ({ children }) => {
 
   if (loader) {
     return (
-      <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600 z-10 border-green-500 fixed top-[50%] left-[50%]"></div>
+      <div className="fixed top-[50%] left-[50%] z-50">
+        <div className="flex items-center justify-center space-x-2">
+          <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-600 goldenBG"></div>
+          <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-600 goldenBG2"></div>
+          <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-600 goldenBG"></div>
+        </div>
+      </div>
     );
   }
 

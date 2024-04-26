@@ -7,9 +7,21 @@ import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
 
 const Register = () => {
-  const { firebaseRegister, firebaseLogOut, user } = useContext(CommonContext);
+  const { firebaseRegister, firebaseLogOut, user, loader, setLoader } = useContext(CommonContext);
   const [hidden1, setHidden1] = useState(false);
   const [hidden2, setHidden2] = useState(false);
+
+  if (loader) {
+    return (
+      <div className="fixed top-[50%] left-[50%] z-50">
+        <div className="flex items-center justify-center space-x-2">
+          <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-600 goldenBG"></div>
+          <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-600 goldenBG2"></div>
+          <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-600 goldenBG"></div>
+        </div>
+      </div>
+    );
+  }
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -32,6 +44,7 @@ const Register = () => {
     }
 
     if (password !== conformPassword) {
+      setLoader(false);
       return Swal.fire({
         title: "Error!",
         text: "Password Not match!",
@@ -41,6 +54,7 @@ const Register = () => {
     }
 
     if (password.length < 6) {
+      setLoader(false);
       return Swal.fire({
         title: "Error!",
         text: "Password must be up to 6 correcter!",
@@ -51,6 +65,7 @@ const Register = () => {
 
     if (!/[A-Z]/.test(password) || !/[a-z]/.test(password)) {
       // return toast.error("Password must be a Uppercase & Lowercase!");
+      setLoader(false);
       return Swal.fire({
         title: "Error!",
         text: "Password must be a Uppercase & Lowercase!",
@@ -74,9 +89,25 @@ const Register = () => {
             firebaseLogOut();
             form.reset();
           })
-          .catch((err) => console.error(err));
+          .catch((err) => {
+            setLoader(false);
+            return Swal.fire({
+              title: "Error!",
+              text: "Password must be up to 6 correcter!",
+              icon: err.message,
+              confirmButtonText: "Back",
+            });
+          });
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setLoader(false);
+        return Swal.fire({
+          title: "Error!",
+          text: "Password must be up to 6 correcter!",
+          icon: err.message,
+          confirmButtonText: "Back",
+        });
+      });
   };
 
   return (

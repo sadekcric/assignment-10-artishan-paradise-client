@@ -7,6 +7,7 @@ export const CommonContext = createContext(null);
 const CommonRoute = ({ children }) => {
   const [user, setUser] = useState({});
   const [loader, setLoader] = useState(true);
+  const [products, setProducts] = useState([]);
 
   const firebaseRegister = (email, password) => {
     setLoader(true);
@@ -32,7 +33,17 @@ const CommonRoute = ({ children }) => {
     return () => unSubscribe();
   }, []);
 
-  const info = { firebaseRegister, firebaseSignIn, firebaseLogOut, user, setUser, loader };
+  // get data from database
+  useEffect(() => {
+    fetch(`https://artisan-paradise-server.vercel.app/products`)
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const info = { firebaseRegister, firebaseSignIn, firebaseLogOut, user, setUser, loader, products, setLoader };
   return <CommonContext.Provider value={info}>{children}</CommonContext.Provider>;
 };
 
