@@ -100,9 +100,7 @@ const AddProduct = () => {
             <select name="stock" className="py-2 px-4 w-full" required>
               <option value=""></option>
               <option value="In Stock">In Stock</option>
-              <option value="Made to Order" className="text-red-500">
-                Made to Order
-              </option>
+              <option value="Made to Order">Made to Order</option>
             </select>
           </div>
 
@@ -113,7 +111,7 @@ const AddProduct = () => {
 
           <div>
             <p>Photo URL:</p>
-            <input className="py-2 px-4 w-full " type="text" name="photo" />
+            <input className="py-2 px-4 w-full " type="text" name="photo" required />
           </div>
 
           <div className="lg:col-span-2">

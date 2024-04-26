@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { CommonContext } from "../../Layout/CommonRoute";
+import defaultProfile from "../../assets/Windows_10_Default_Profile_Picture.svg.png";
 
 const Nav = () => {
   const { user, firebaseLogOut } = useContext(CommonContext);
@@ -16,6 +17,7 @@ const Nav = () => {
 
   const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
 
+  // for Responsive
   const handleToggle = (e) => {
     if (e.target.checked) {
       setTheme("synthwave");
@@ -136,14 +138,16 @@ const Nav = () => {
             </>
           </ul>
 
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex lg:items-center">
             {user ? (
-              <button
-                onClick={handleLogOut}
-                className="self-center px-8 py-3 border-2 goldenBorder transition hover:bg-yellow-600 rounded-md goldenText"
-              >
-                Log Out
-              </button>
+              <div className="w-12 h-12 self-center  rounded-full bg-slate-100">
+                <img
+                  src={user?.photoURL || defaultProfile}
+                  alt=""
+                  className="w-full h-full object-cover object-center rounded-full"
+                  data-tooltip-id="my-tooltip-1"
+                />
+              </div>
             ) : (
               <div className="items-center font-semibold  gap-5 flex-shrink-0 hidden lg:flex goldenText">
                 <Link
@@ -161,7 +165,7 @@ const Nav = () => {
               </div>
             )}
           </div>
-          <label className="swap swap-rotate">
+          <label className="swap swap-rotate hidden lg:flex lg:items-center">
             {/* this hidden checkbox controls the state */}
             <input onChange={handleToggle} type="checkbox" className="theme-controller" value={theme} />
 
@@ -176,8 +180,29 @@ const Nav = () => {
             )}
           </label>
 
-          <button onClick={handleResponsive} className="p-4 lg:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 goldenText">
+          {/* for Mobile */}
+
+          {user && (
+            <div className="w-8 h-8 lg:hidden self-center  rounded-full bg-slate-100 z-100">
+              <img
+                src={user?.photoURL || defaultProfile}
+                alt=""
+                className="w-full h-full object-cover object-center rounded-full"
+                data-tooltip-id="my-tooltip-1"
+              />
+            </div>
+          )}
+
+          {/* for Mobile */}
+          <button className="lg:hidden inline-block">
+            <svg
+              onClick={handleResponsive}
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="w-6 h-6 goldenText"
+            >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
           </button>
@@ -188,3 +213,9 @@ const Nav = () => {
 };
 
 export default Nav;
+
+{
+  /* <button onClick={handleLogOut} className="self-center px-8 py-3 border-2 goldenBorder transition hover:bg-yellow-600 rounded-md goldenText">
+  Log Out
+</button>; */
+}
