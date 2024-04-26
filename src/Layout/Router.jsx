@@ -6,6 +6,8 @@ import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import PrivateRoute from "./PrivateRoute";
 import AllArtAndCraft from "../Pages/AllArtAndCraft/AllArtAndCraft";
+import MyArt from "../Pages/MyArt/MyArt";
+import Profile from "../Pages/Profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +37,14 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
+      },
+      {
+        path: "myArt",
+        element: <MyArt />,
+      },
+      {
+        path: "profile",
+        element: <Profile />,
       },
     ],
   },

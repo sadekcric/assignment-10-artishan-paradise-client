@@ -6,6 +6,7 @@ import defaultProfile from "../../assets/Windows_10_Default_Profile_Picture.svg.
 const Nav = () => {
   const { user, firebaseLogOut } = useContext(CommonContext);
   const [active, setActive] = useState(false);
+  const [profileActive, setProfileActive] = useState(false);
 
   const handleLogOut = () => {
     firebaseLogOut().then().catch();
@@ -115,7 +116,7 @@ const Nav = () => {
                       className={({ isActive }) =>
                         isActive
                           ? "goldenBG2 border-2 goldenBorder  rounded-sm px-6 py-3 font-semibold goldenText"
-                          : "border-b-2 goldenBorder px-6 py-3 font-semibold goldenText"
+                          : "border-b-2 goldenText goldenBorder px-6 py-3 font-semibold goldenText"
                       }
                     >
                       Login
@@ -138,15 +139,51 @@ const Nav = () => {
             </>
           </ul>
 
-          <div className="hidden lg:flex lg:items-center">
+          <div className="hidden lg:flex lg:items-center ">
             {user ? (
-              <div className="w-12 h-12 self-center  rounded-full bg-slate-100">
-                <img
-                  src={user?.photoURL || defaultProfile}
-                  alt=""
-                  className="w-full h-full object-cover object-center rounded-full"
-                  data-tooltip-id="my-tooltip-1"
-                />
+              <div className="flex items-center gap-1 relative">
+                <div
+                  onClick={() => setProfileActive(!profileActive)}
+                  className="w-12 h-12 self-center cursor-pointer rounded-full bg-slate-100"
+                >
+                  <img
+                    src={user?.photoURL || defaultProfile}
+                    alt=""
+                    className="w-full h-full object-cover object-center rounded-full"
+                    data-tooltip-id="my-tooltip-1"
+                  />
+                </div>
+
+                {/* User Profile */}
+                <div
+                  className={`goldenBG z-50 min-h-[200px] absolute ${
+                    profileActive ? "translate-y-[275px] opacity-100" : "-translate-y-72 opacity-0"
+                  } transition duration-1000 ease-in-out px-10 text-white rounded-b-lg right-0 pb-5 min-w-[400px]`}
+                >
+                  <h2 className="text-xl font-semibold text-center border-b-2 border-green-900 mb-3 ">USER</h2>
+                  <ul className="space-y-3">
+                    <li>
+                      <img className="w-40 h-40 mx-auto rounded-full" src={user.photoURL || defaultProfile} alt="" />
+                    </li>
+                    <li className="font-semibold text-center text-xl">Hi! {user.displayName}</li>
+                    <li>
+                      <ul className="goldenBG2 goldenText px-6 py-6 rounded-xl shadow-lg">
+                        <li className="border-b-2 goldenBorder px-2 pt-3 text-md font-semibold">
+                          <Link to="/profile">Profile</Link>
+                        </li>
+
+                        <li className="border-b-2 goldenBorder px-2 pt-3 text-md font-semibold">
+                          <Link to="/myArt">My Art & Craft</Link>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <button onClick={() => firebaseLogOut()} className="self-center w-full shadow-2xl py-3 rounded font-semibold">
+                        Sign out
+                      </button>
+                    </li>
+                  </ul>
+                </div>
               </div>
             ) : (
               <div className="items-center font-semibold  gap-5 flex-shrink-0 hidden lg:flex goldenText">
@@ -165,6 +202,7 @@ const Nav = () => {
               </div>
             )}
           </div>
+
           <label className="swap swap-rotate hidden lg:flex lg:items-center">
             {/* this hidden checkbox controls the state */}
             <input onChange={handleToggle} type="checkbox" className="theme-controller" value={theme} />
