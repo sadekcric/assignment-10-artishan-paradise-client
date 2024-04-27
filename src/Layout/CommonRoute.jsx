@@ -32,7 +32,7 @@ const CommonRoute = ({ children }) => {
     });
 
     return () => unSubscribe();
-  }, [products]);
+  }, []);
 
   // get data from database
   useEffect(() => {
