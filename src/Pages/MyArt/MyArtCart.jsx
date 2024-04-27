@@ -1,27 +1,85 @@
 import PropTypes from "prop-types";
+import { FiEdit } from "react-icons/fi";
+import { Link } from "react-router-dom";
+import { RiDeleteBin3Line } from "react-icons/ri";
+import { useContext } from "react";
+import { CommonContext } from "../../Layout/CommonRoute";
 const MyArtCart = ({ product }) => {
-  const { category, customization, details, displayName, email, name, photo, photoURL, price, processingTime, rating, stock } = product;
+  const { category, customization, name, photo, price, processingTime, rating, stock, _id } = product;
+
+  const { loaded, setLoaded } = useContext(CommonContext);
+
+  if (loaded) {
+    return (
+      <div className="fixed top-[50%] left-[50%] z-50">
+        <div className="flex items-center justify-center space-x-2">
+          <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-600 goldenBG"></div>
+          <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-600 goldenBG2"></div>
+          <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-600 goldenBG"></div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
-      <section className="dark:bg-gray-100 dark:text-gray-800">
-        <div className="container flex flex-col mx-auto lg:flex-row">
+      <section className="dark:bg-gray-100 dark:text-gray-800 mb-5 ">
+        <div className="container flex flex-col mx-auto lg:flex-row border-2 goldenBorder rounded-lg">
           <div className="w-full lg:w-1/3">
-            <img src={photo} alt="" />
+            <img className="rounded-l-lg h-full" src={photo} alt="" />
           </div>
 
-          <div className="flex flex-col w-full p-6 lg:w-2/3 md:p-8 lg:p-12">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8 mb-8 dark:text-violet-600">
-              <path
-                fillRule="evenodd"
-                d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-            <h2 className="text-3xl font-semibold leading-none">Modern solutions to all kinds of problems</h2>
-            <p className="mt-4 mb-8 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptatum rem amet!</p>
-            <button className="self-start px-10 py-3 text-lg font-medium rounded-3xl dark:bg-violet-600 dark:text-gray-50">
-              Get started
-            </button>
+          <div className="flex  flex-col w-full p-6 lg:w-2/3 goldenBG2 md:p-8 lg:p-12 rounded-r-lg">
+            <div>
+              <h2 className="text-xl lg:text-3xl goldenText font-semibold">{name}</h2>
+
+              <p className="text-lg text-[#af8260] font-semibold">{category}</p>
+            </div>
+
+            <div className="flex flex-col lg:items-center lg:justify-between lg:flex-row">
+              <div className="mt-3 lg:w-[70%]">
+                <p className="lg:text-lg font-semibold goldenBG flex border-2 border-b-0 goldenBorder px-6 py-2">
+                  <span className=" pr-2 w-2/3">Customization Status:</span> {customization} customized
+                </p>
+
+                <p className="lg:text-lg font-semibold border-2 flex border-b-0 goldenBorder px-6 py-2 bg-[#FFF5E0]">
+                  <span className=" w-2/3">Stock:</span> {stock}
+                </p>
+
+                <p className="lg:text-lg font-semibold goldenBG border-2 flex border-b-0 goldenBorder px-6 py-2">
+                  <span className=" w-2/3">Processing Time:</span> {processingTime}
+                </p>
+
+                <p className="lg:text-lg font-semibold border-2 flex border-b-0 goldenBorder px-6 py-2 bg-[#FFF5E0]">
+                  <span className=" w-2/3">Average Rating:</span> {rating}
+                </p>
+
+                <p className="lg:text-lg font-semibold goldenBG text-red-700 flex border-2 goldenBorder px-6 py-2">
+                  <span className=" w-2/3">Price:</span> $ {price}
+                </p>
+              </div>
+
+              <div className="lg:space-y-3 mt-5 lg:mt-0 flex lg:block gap-5 items-center justify-center">
+                <Link
+                  to={`/update/${_id}`}
+                  onClick={() => setLoaded(true)}
+                  className="text-lg flex items-center gap-2 font-semibold goldenText bg-[#FFF5E0] w-32 justify-center py-2 rounded-md shadow-lg"
+                >
+                  {" "}
+                  <span>
+                    <FiEdit />
+                  </span>{" "}
+                  Update
+                </Link>
+                <button className="text-lg flex items-center gap-2 font-semibold goldenText bg-[#FFF5E0] w-32 justify-center py-2 rounded-md shadow-lg">
+                  {" "}
+                  <span>
+                    <RiDeleteBin3Line />
+                  </span>{" "}
+                  Delete
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>

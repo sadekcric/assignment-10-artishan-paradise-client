@@ -11,6 +11,7 @@ import Profile from "../Pages/Profile/Profile";
 import Details from "../Pages/Home/Details";
 import Privacy from "../Pages/Privacy/Privacy";
 import TermsAndCon from "../Pages/Terms&Condition/TermsAndCon";
+import Update from "../Pages/MyArt/Update";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,11 @@ const router = createBrowserRouter([
       {
         path: "terms",
         element: <TermsAndCon />,
+      },
+      {
+        path: "/update/:id",
+        element: <Update />,
+        loader: ({ params }) => fetch(`https://artisan-paradise-server.vercel.app/products/${params.id}`),
       },
     ],
   },

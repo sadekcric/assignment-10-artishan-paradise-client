@@ -65,7 +65,7 @@ const Login = () => {
   };
   return (
     <div className="md:relative p-3">
-      <div className="w-full h-[calc(100vh-120px)] hidden md:block">
+      <div className="w-full lg:h-[calc(100vh-120px)] hidden md:block">
         <img className="w-full h-full blur-sm opacity-50" src={background} alt="" />
       </div>
       <div className="min-h-[calc(100vh-100px)] flex justify-center items-center md:absolute md:top-1/2 md:left-1/2 md:-translate-y-[50%] md:-translate-x-[50%]">
