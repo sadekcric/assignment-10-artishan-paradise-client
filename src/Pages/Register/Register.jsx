@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { CommonContext } from "../../Layout/CommonRoute";
 import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
 
@@ -10,6 +10,7 @@ const Register = () => {
   const { firebaseRegister, firebaseLogOut, user, loader, setLoader } = useContext(CommonContext);
   const [hidden1, setHidden1] = useState(false);
   const [hidden2, setHidden2] = useState(false);
+  const navigate = useNavigate();
 
   if (loader) {
     return (
@@ -87,6 +88,7 @@ const Register = () => {
               timer: 3000,
             });
             firebaseLogOut();
+            navigate("/login");
             form.reset();
           })
           .catch((err) => {

@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { FaStarHalfAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const CraftItem = ({ product }) => {
   const { category, customization, details, displayName, email, name, photo, photoURL, price, processingTime, rating, stock, _id } =
@@ -38,6 +39,18 @@ const CraftItem = ({ product }) => {
               <p className="md:text-lg font-semibold text-red-600">${price}</p>
             </div>
             <p className="leading-snug dark:text-gray-600 md:text-lg font-semibold">{details}</p>
+
+            <div>
+              <div className="text-center mt-8 mb-5">
+                <Link to={`/details/${_id}`} className="relative px-8 py-5 font-medium text-white group">
+                  <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform translate-x-0 -skew-x-12 goldenBG group-hover:goldenBG group-hover:skew-x-12"></span>
+                  <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform skew-x-12 bg-[#FFF5E0] group-hover:goldenBG group-hover:-skew-x-12"></span>
+                  <span className="absolute bottom-0 left-0 hidden w-10 h-20 transition-all duration-100 ease-out transform -translate-x-8 translate-y-10 goldenBG -rotate-12"></span>
+                  <span className="absolute bottom-0 right-0 hidden w-10 h-20 transition-all duration-100 ease-out transform translate-x-10 translate-y-8 bg-[#FFF5E0] -rotate-12"></span>
+                  <span className="relative font-semibold text-lg goldenText">View Details</span>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>

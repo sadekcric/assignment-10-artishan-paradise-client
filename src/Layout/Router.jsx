@@ -8,6 +8,7 @@ import PrivateRoute from "./PrivateRoute";
 import AllArtAndCraft from "../Pages/AllArtAndCraft/AllArtAndCraft";
 import MyArt from "../Pages/MyArt/MyArt";
 import Profile from "../Pages/Profile/Profile";
+import Details from "../Pages/Home/Details";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,11 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />,
+      },
+      {
+        path: "/details/:id",
+        element: <Details />,
+        loader: ({ params }) => fetch(`https://artisan-paradise-server.vercel.app/products/${params.id}`),
       },
     ],
   },
