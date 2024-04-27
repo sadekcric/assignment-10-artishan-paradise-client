@@ -4,9 +4,8 @@ import { CommonContext } from "../../Layout/CommonRoute";
 import defaultProfile from "../../assets/Windows_10_Default_Profile_Picture.svg.png";
 
 const Nav = () => {
-  const { user, firebaseLogOut } = useContext(CommonContext);
+  const { user, firebaseLogOut, profileActive, setProfileActive } = useContext(CommonContext);
   const [active, setActive] = useState(false);
-  const [profileActive, setProfileActive] = useState(false);
 
   const handleLogOut = () => {
     firebaseLogOut().then().catch();

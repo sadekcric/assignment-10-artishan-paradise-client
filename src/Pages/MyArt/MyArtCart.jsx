@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { RiDeleteBin3Line } from "react-icons/ri";
 import { useContext } from "react";
 import { CommonContext } from "../../Layout/CommonRoute";
-const MyArtCart = ({ product }) => {
+import Swal from "sweetalert2";
+const MyArtCart = ({ product, setSort, sort }) => {
   const { category, customization, name, photo, price, processingTime, rating, stock, _id } = product;
 
   const { loaded, setLoaded } = useContext(CommonContext);
@@ -20,6 +21,36 @@ const MyArtCart = ({ product }) => {
       </div>
     );
   }
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to Delete this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, buy it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://artisan-paradise-server.vercel.app/products/${id}`, {
+          method: "DELETE",
+        })
+          .then(() => {
+            const remainingItem = sort.filter((item) => item._id !== id);
+            setSort(remainingItem);
+            Swal.fire({
+              title: " DELETED!",
+              text: "This Painting Delete Successfully.",
+              icon: "success",
+            });
+          })
+          .catch((err) => {
+            console.log(err.message);
+          });
+      }
+    });
+  };
 
   return (
     <div>
@@ -71,7 +102,12 @@ const MyArtCart = ({ product }) => {
                   </span>{" "}
                   Update
                 </Link>
-                <button className="text-lg flex items-center gap-2 font-semibold goldenText bg-[#FFF5E0] w-32 justify-center py-2 rounded-md shadow-lg">
+                <button
+                  onClick={() => {
+                    handleDelete(_id);
+                  }}
+                  className="text-lg flex items-center gap-2 font-semibold goldenText bg-[#FFF5E0] w-32 justify-center py-2 rounded-md shadow-lg"
+                >
                   {" "}
                   <span>
                     <RiDeleteBin3Line />
@@ -91,4 +127,6 @@ export default MyArtCart;
 
 MyArtCart.propTypes = {
   product: PropTypes.object,
+  sort: PropTypes.array,
+  setSort: PropTypes.func,
 };

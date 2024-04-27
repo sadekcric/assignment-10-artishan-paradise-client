@@ -9,6 +9,7 @@ const CommonRoute = ({ children }) => {
   const [loader, setLoader] = useState(true);
   const [products, setProducts] = useState([]);
   const [loaded, setLoaded] = useState(false);
+  const [profileActive, setProfileActive] = useState(false);
 
   const firebaseRegister = (email, password) => {
     setLoader(true);
@@ -32,7 +33,7 @@ const CommonRoute = ({ children }) => {
     });
 
     return () => unSubscribe();
-  }, []);
+  }, [products, profileActive]);
 
   // get data from database
   useEffect(() => {
@@ -44,7 +45,20 @@ const CommonRoute = ({ children }) => {
       .catch((err) => console.log(err));
   }, []);
 
-  const info = { firebaseRegister, firebaseSignIn, firebaseLogOut, user, setUser, loader, products, setLoader, loaded, setLoaded };
+  const info = {
+    firebaseRegister,
+    firebaseSignIn,
+    firebaseLogOut,
+    user,
+    setUser,
+    loader,
+    products,
+    setLoader,
+    loaded,
+    setLoaded,
+    profileActive,
+    setProfileActive,
+  };
   return <CommonContext.Provider value={info}>{children}</CommonContext.Provider>;
 };
 

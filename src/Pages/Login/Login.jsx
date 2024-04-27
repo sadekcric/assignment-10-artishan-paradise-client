@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet-async";
 import background from "../../assets/loginBg.png";
 
 const Login = () => {
-  const { firebaseSignIn, setUser, user, loader, setLoader } = useContext(CommonContext);
+  const { firebaseSignIn, setUser, user, loader, setLoader, setProfileActive } = useContext(CommonContext);
   const [hidden, setHidden] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -42,6 +42,7 @@ const Login = () => {
 
     firebaseSignIn(email, password)
       .then(({ user }) => {
+        setProfileActive(false);
         navigate(location?.state ? location.state : "/");
         setUser(user);
 

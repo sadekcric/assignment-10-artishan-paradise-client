@@ -23,9 +23,6 @@ const MyArt = () => {
     setMyProduct(usersProduct);
   }, [myArt]);
 
-  console.log(sort);
-  console.log(myProduct);
-
   const handleAll = () => {
     const All = myArt.filter((product) => product.email === user.email);
 
@@ -83,7 +80,7 @@ const MyArt = () => {
 
       <div>
         {sort.map((product) => (
-          <MyArtCart key={product._id} product={product} />
+          <MyArtCart key={product._id} product={product} setSort={setSort} sort={sort} />
         ))}
       </div>
     </div>
