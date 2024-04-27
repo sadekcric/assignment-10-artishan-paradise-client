@@ -1,13 +1,32 @@
 import PropTypes from "prop-types";
+import { useContext } from "react";
+import { Helmet } from "react-helmet-async";
 import { FaStarHalfAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { CommonContext } from "../../../Layout/CommonRoute";
 
 const CraftItem = ({ product }) => {
-  const { category, customization, details, displayName, email, name, photo, photoURL, price, processingTime, rating, stock, _id } =
-    product;
+  const { category, details, displayName, name, photo, photoURL, price, rating, stock, _id } = product;
+
+  const { loaded, setLoaded } = useContext(CommonContext);
+
+  if (loaded) {
+    return (
+      <div className="fixed top-[50%] left-[50%] z-50">
+        <div className="flex items-center justify-center space-x-2">
+          <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-600 goldenBG"></div>
+          <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-600 goldenBG2"></div>
+          <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-600 goldenBG"></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="goldenText goldenBG2 border-4 border-transparent hover:border-[#FFF5E0] transition rounded-lg">
+      <Helmet>
+        <title>Artisan Paradise|Home</title>
+      </Helmet>
       <div className="max-w-lg p-4 shadow-md dark:bg-gray-50 dark:text-gray-800">
         <div className="flex justify-between pb-4 border-bottom">
           <div className="flex items-center gap-2">
@@ -42,7 +61,7 @@ const CraftItem = ({ product }) => {
 
             <div>
               <div className="text-center mt-8 mb-5">
-                <Link to={`/details/${_id}`} className="relative px-8 py-5 font-medium text-white group">
+                <Link onClick={() => setLoaded(true)} to={`/details/${_id}`} className="relative px-8 py-5 font-medium text-white group">
                   <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform translate-x-0 -skew-x-12 goldenBG group-hover:goldenBG group-hover:skew-x-12"></span>
                   <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform skew-x-12 bg-[#FFF5E0] group-hover:goldenBG group-hover:-skew-x-12"></span>
                   <span className="absolute bottom-0 left-0 hidden w-10 h-20 transition-all duration-100 ease-out transform -translate-x-8 translate-y-10 goldenBG -rotate-12"></span>

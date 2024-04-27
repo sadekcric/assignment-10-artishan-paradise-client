@@ -8,6 +8,7 @@ const CommonRoute = ({ children }) => {
   const [user, setUser] = useState({});
   const [loader, setLoader] = useState(true);
   const [products, setProducts] = useState([]);
+  const [loaded, setLoaded] = useState(false);
 
   const firebaseRegister = (email, password) => {
     setLoader(true);
@@ -43,7 +44,7 @@ const CommonRoute = ({ children }) => {
       .catch((err) => console.log(err));
   }, []);
 
-  const info = { firebaseRegister, firebaseSignIn, firebaseLogOut, user, setUser, loader, products, setLoader };
+  const info = { firebaseRegister, firebaseSignIn, firebaseLogOut, user, setUser, loader, products, setLoader, loaded, setLoaded };
   return <CommonContext.Provider value={info}>{children}</CommonContext.Provider>;
 };
 

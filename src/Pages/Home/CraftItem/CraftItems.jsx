@@ -4,8 +4,9 @@ import CraftItem from "./CraftItem";
 
 const CraftItems = () => {
   const { products } = useContext(CommonContext);
+  const newProducts = [...products].reverse();
 
-  const sliceProduct = products.slice(0, 6);
+  const sliceProduct = newProducts.slice(0, 6);
 
   return (
     <div className="container mx-auto p-3 mt-10 lg:mt-24">

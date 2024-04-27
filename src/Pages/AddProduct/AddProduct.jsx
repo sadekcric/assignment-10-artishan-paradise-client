@@ -48,10 +48,11 @@ const AddProduct = () => {
     <div className="min-h-[calc(100vh-96px)] flex flex-col items-center justify-center">
       <div className="bg-[#E4C59E] text-[#6D2932] p-3 lg:px-10 lg:py-20 rounded-lg container mx-auto">
         <div className="">
-          <h2 className="text-3xl lg:text-5xl text-center font-bold">Add New Product</h2>
-          <p className="lg:w-2/3 lg:mx-auto mt-2 text-center">
-            It is a long established fact that a reader will be distraceted by the readable content of a page when looking at its layout.
-            The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.
+          <h2 className="text-3xl lg:text-5xl text-center font-bold">Add Craft Item</h2>
+          <p className="lg:w-2/3 lg:mx-auto mt-2 text-center lg:text-lg">
+            Crafting is more than just a hobby; it's a form of artistic expression that allows us to unleash our creativity and transform
+            ordinary materials into extraordinary pieces. Our Craft page is a haven for enthusiasts of all levels, offering inspiration,
+            tutorials, and resources to ignite your passion for DIY projects.
           </p>
         </div>
 

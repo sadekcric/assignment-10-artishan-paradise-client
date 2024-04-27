@@ -62,18 +62,32 @@ const Nav = () => {
       </li>
 
       {user && (
-        <li>
-          <NavLink
-            to="/add"
-            className={({ isActive }) =>
-              isActive
-                ? "goldenBG2 border-2 goldenBorder  rounded-sm px-6 py-3 font-semibold goldenText"
-                : "border-b-2 goldenBorder px-6 py-3 font-semibold goldenText"
-            }
-          >
-            Add Craft
-          </NavLink>
-        </li>
+        <>
+          <li>
+            <NavLink
+              to="/add"
+              className={({ isActive }) =>
+                isActive
+                  ? "goldenBG2 border-2 goldenBorder  rounded-sm px-6 py-3 font-semibold goldenText"
+                  : "border-b-2 goldenBorder px-6 py-3 font-semibold goldenText"
+              }
+            >
+              Add Craft
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/myArt"
+              className={({ isActive }) =>
+                isActive
+                  ? "goldenBG2 border-2 goldenBorder  rounded-sm px-6 py-3 font-semibold goldenText"
+                  : "border-b-2 goldenBorder px-6 py-3 font-semibold goldenText"
+              }
+            >
+              My Art & Craft
+            </NavLink>
+          </li>
+        </>
       )}
     </>
   );
