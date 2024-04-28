@@ -40,7 +40,7 @@ const Details = () => {
       </Helmet>
       <div className="mb-10">
         <h2 className="text-3xl lg:text-5xl text-center mt-10 mb-3">DETAILS</h2>
-        <p className="w-2/3 mx-auto lg:text-lg">
+        <p className="lg:w-2/3 lg:mx-auto lg:text-lg">
           Thank you for your interest in our product! Your curiosity is the spark that ignites our passion for innovation and excellence.
           We're truly grateful for the opportunity to share with you something we're so passionate about.
         </p>
