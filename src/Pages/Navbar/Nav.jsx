@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { CommonContext } from "../../Layout/CommonRoute";
 import defaultProfile from "../../assets/Windows_10_Default_Profile_Picture.svg.png";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 const Nav = () => {
   const { user, firebaseLogOut, profileActive, setProfileActive } = useContext(CommonContext);
@@ -160,11 +161,12 @@ const Nav = () => {
                   className="w-12 h-12 self-center cursor-pointer rounded-full bg-slate-100"
                 >
                   <img
+                    data-tooltip-id="my-tooltip-1"
                     src={user?.photoURL || defaultProfile}
                     alt=""
                     className="w-full h-full object-cover object-center rounded-full"
-                    data-tooltip-id="my-tooltip-1"
                   />
+                  <ReactTooltip id="my-tooltip-1" place="left" content={user.displayName} />
                 </div>
 
                 {/* User Profile */}
@@ -178,6 +180,7 @@ const Nav = () => {
                     <li>
                       <img className="w-40 h-40 mx-auto rounded-full" src={user.photoURL || defaultProfile} alt="" />
                     </li>
+
                     <li className="font-semibold text-center text-xl">Hi! {user.displayName}</li>
                     <li>
                       <ul className="goldenBG2 goldenText px-6 py-6 rounded-xl shadow-lg">
