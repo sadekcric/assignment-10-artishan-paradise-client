@@ -108,7 +108,7 @@ const Nav = () => {
           {/* forMobile */}
           <ul
             className={`space-x-3 lg:hidden absolute lg:items-center flex flex-col gap-6 items-center right-5 goldenBG min-h-56 rounded-b-lg pt-8 pr-3 z-20 ${
-              active ? "translate-y-20 opacity-100 duration-500 " : "-translate-y-56 transition duration-500 opacity-0 "
+              active ? "translate-y-20 opacity-100 duration-500 " : "-translate-y-80 transition duration-500 opacity-0 "
             }`}
           >
             {navLink}
