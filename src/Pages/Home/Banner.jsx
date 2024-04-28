@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
+import { Typewriter } from "react-simple-typewriter";
 
 import { Pagination, Autoplay } from "swiper/modules";
 import slider1 from "../../assets/slider1.jpg";
@@ -30,7 +31,15 @@ const Banner = () => {
                 <br />
 
                 <span className="text-3xl md:text-4xl lg:text-6xl font-bold goldenText  pt-3 inline-block">
-                  Your Destination for Fine Art!
+                  <Typewriter
+                    words={["Your Destination for Fine Art!"]}
+                    loop={"infinitely"}
+                    cursor
+                    cursorStyle="_"
+                    typeSpeed={70}
+                    deleteSpeed={50}
+                    delaySpeed={1000}
+                  />
                 </span>
               </h1>
 
@@ -61,7 +70,15 @@ const Banner = () => {
                 <br />
 
                 <span className="text-3xl md:text-4xl lg:text-6xl font-bold goldenText  pt-3 inline-block">
-                  Where Every Stroke Tells a Story!
+                  <Typewriter
+                    words={["Where Every Stroke Tells a Story!"]}
+                    loop={"infinitely"}
+                    cursor
+                    cursorStyle="_"
+                    typeSpeed={70}
+                    deleteSpeed={50}
+                    delaySpeed={1000}
+                  />
                 </span>
               </h1>
 
@@ -93,7 +110,17 @@ const Banner = () => {
                 <span className="text-2xl md:text-3xl lg:text-5xl font-bold text-[#996515] ">Sketch & Stroke Gallery, </span>
                 <br />
 
-                <span className="text-3xl md:text-4xl lg:text-6xl font-bold goldenText  pt-3 inline-block">Where Masterpieces Await!</span>
+                <span className="text-3xl md:text-4xl lg:text-6xl font-bold goldenText  pt-3 inline-block">
+                  <Typewriter
+                    words={["Where Masterpieces Await!"]}
+                    loop={"infinitely"}
+                    cursor
+                    cursorStyle="_"
+                    typeSpeed={70}
+                    deleteSpeed={50}
+                    delaySpeed={1000}
+                  />
+                </span>
               </h1>
 
               <p className="text-center container mx-auto lg:text-right goldenText text-md lg:text-lg lg:font-semibold mt-5">
