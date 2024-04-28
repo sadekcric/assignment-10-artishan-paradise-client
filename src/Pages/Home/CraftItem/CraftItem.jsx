@@ -9,18 +9,20 @@ const CraftItem = ({ product }) => {
   const { category, details, displayName, name, photo, photoURL, price, rating, stock, _id } = product;
   console.log(_id);
 
-  const { loaded, setLoaded } = useContext(CommonContext);
+  const { loaded, setLoaded, user } = useContext(CommonContext);
 
   if (loaded) {
-    return (
-      <div className="fixed top-[50%] left-[50%] z-50">
-        <div className="flex items-center justify-center space-x-2">
-          <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-600 goldenBG"></div>
-          <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-600 goldenBG2"></div>
-          <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-600 goldenBG"></div>
+    if (user) {
+      return (
+        <div className="fixed top-[50%] left-[50%] z-50">
+          <div className="flex items-center justify-center space-x-2">
+            <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-600 goldenBG"></div>
+            <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-600 goldenBG2"></div>
+            <div className="w-4 h-4 rounded-full animate-pulse dark:bg-violet-600 goldenBG"></div>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 
   return (
