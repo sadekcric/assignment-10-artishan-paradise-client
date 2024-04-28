@@ -55,11 +55,19 @@ const router = createBrowserRouter([
       },
       {
         path: "profile",
-        element: <Profile />,
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/details/:id",
-        element: <Details />,
+        element: (
+          <PrivateRoute>
+            <Details />
+          </PrivateRoute>
+        ),
         loader: ({ params }) => fetch(`https://artisan-paradise-server.vercel.app/products/${params.id}`),
       },
       {
@@ -72,7 +80,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/update/:id",
-        element: <Update />,
+        element: (
+          <PrivateRoute>
+            <Update />
+          </PrivateRoute>
+        ),
         loader: ({ params }) => fetch(`https://artisan-paradise-server.vercel.app/products/${params.id}`),
       },
     ],
