@@ -12,11 +12,14 @@ import Details from "../Pages/Home/Details";
 import Privacy from "../Pages/Privacy/Privacy";
 import TermsAndCon from "../Pages/Terms&Condition/TermsAndCon";
 import Update from "../Pages/MyArt/Update";
+import Error from "../Pages/Error/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <Error />,
+
     children: [
       {
         path: "/",

@@ -1,18 +1,59 @@
 import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { CommonContext } from "../../Layout/CommonRoute";
 import { Helmet } from "react-helmet-async";
 import background from "../../assets/loginBg.png";
+import Swal from "sweetalert2";
 
 const Update = () => {
   const { setLoaded } = useContext(CommonContext);
-  const loadedArt = useLoaderData();
-
-  const { category, customization, details, name, photo, price, processingTime, rating, stock } = loadedArt;
-
   setLoaded(false);
+  const loadedArt = useLoaderData();
+  const navigate = useNavigate();
 
-  const handleUpdate = () => {};
+  const { category, customization, details, name, photo, price, processingTime, rating, stock, _id } = loadedArt;
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const name = form.name.value;
+    const price = form.price.value;
+    const category = form.category.value;
+    const rating = form.rating.value;
+    const customization = form.customization.value;
+    const stock = form.stock.value;
+    const details = form.details.value;
+    const photo = form.photo.value;
+
+    const processingTime = form.processingTime.value;
+
+    const product = { name, price, rating, category, customization, stock, details, photo, processingTime };
+
+    fetch(`https://artisan-paradise-server.vercel.app/products/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(product),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+
+          navigate("/myArt");
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
 
   return (
     <div className="relative">

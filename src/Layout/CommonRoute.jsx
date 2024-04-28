@@ -1,7 +1,15 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import auth from "./../firebase/firebase.config";
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
 
 export const CommonContext = createContext(null);
 const CommonRoute = ({ children }) => {
@@ -24,6 +32,16 @@ const CommonRoute = ({ children }) => {
   const firebaseLogOut = () => {
     setLoader(true);
     return signOut(auth);
+  };
+
+  const googleProvider = new GoogleAuthProvider();
+
+  const firebaseGoogleAuth = () => {
+    return signInWithPopup(auth, googleProvider);
+  };
+  const githubProvider = new GithubAuthProvider();
+  const firebaseGithubAuth = () => {
+    return signInWithPopup(auth, githubProvider);
   };
 
   useEffect(() => {
@@ -58,6 +76,8 @@ const CommonRoute = ({ children }) => {
     setLoaded,
     profileActive,
     setProfileActive,
+    firebaseGoogleAuth,
+    firebaseGithubAuth,
   };
   return <CommonContext.Provider value={info}>{children}</CommonContext.Provider>;
 };
