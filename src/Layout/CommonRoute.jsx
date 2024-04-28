@@ -18,6 +18,7 @@ const CommonRoute = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [profileActive, setProfileActive] = useState(false);
+  const [categoryProduct, setCategoryProduct] = useState([]);
 
   const firebaseRegister = (email, password) => {
     setLoader(true);
@@ -78,6 +79,8 @@ const CommonRoute = ({ children }) => {
     setProfileActive,
     firebaseGoogleAuth,
     firebaseGithubAuth,
+    categoryProduct,
+    setCategoryProduct,
   };
   return <CommonContext.Provider value={info}>{children}</CommonContext.Provider>;
 };

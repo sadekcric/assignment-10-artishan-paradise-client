@@ -1,6 +1,6 @@
 const ArtistArticle = () => {
   return (
-    <div className="mt-10 lg:mt-24 p-3">
+    <div className="mt-5 lg:mt-10 p-3">
       <section className="my-8 dark:bg-gray-100 dark:text-gray-800">
         <div className="container flex flex-col items-center mx-auto md:p-10 md:px-12">
           <h1 className="p-4 text-3xl lg:text-5xl font-bold goldenText  text-center">ARTIST ARTICLE</h1>

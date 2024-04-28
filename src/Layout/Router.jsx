@@ -13,6 +13,7 @@ import Privacy from "../Pages/Privacy/Privacy";
 import TermsAndCon from "../Pages/Terms&Condition/TermsAndCon";
 import Update from "../Pages/MyArt/Update";
 import Error from "../Pages/Error/Error";
+import CategoryCart from "../Pages/Home/categories/CategoryCart";
 
 const router = createBrowserRouter([
   {
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) => fetch(`https://artisan-paradise-server.vercel.app/products/${params.id}`),
+      },
+      {
+        path: "categoryCart",
+        element: <CategoryCart />,
       },
     ],
   },

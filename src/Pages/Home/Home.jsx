@@ -1,6 +1,7 @@
 import ArtistArticle from "./ArtistArticle/ArtistArticle";
 import Banner from "./Banner";
 import CraftItems from "./CraftItem/CraftItems";
+import Faq from "./Faq/Faq";
 import Categories from "./categories/Categories";
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
       <Categories />
 
       <ArtistArticle />
+      <Faq />
     </>
   );
 };
