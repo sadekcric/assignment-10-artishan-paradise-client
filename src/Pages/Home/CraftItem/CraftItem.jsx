@@ -22,6 +22,8 @@ const CraftItem = ({ product }) => {
           </div>
         </div>
       );
+    } else {
+      setLoaded(false);
     }
   }
 
