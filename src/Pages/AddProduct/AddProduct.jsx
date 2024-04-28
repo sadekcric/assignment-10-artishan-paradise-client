@@ -46,22 +46,22 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative py-3">
       <div className="w-full  hidden md:block">
         <img className="w-full h-full blur-sm opacity-50" src={background} alt="" />
       </div>
-      <div className="min-h-[calc(100vh-96px)] flex flex-col items-center justify-center md:absolute md:top-1/2 md:left-1/2 md:-translate-y-[50%] md:-translate-x-[50%]">
-        <div className=" p-3 lg:px-10 lg:py-20 rounded-lg container mx-auto bg-[#E4C59E] md:bg-opacity-25 text-[#6D2932] font-semibold md:border-2 md:shadow-xl md:border-[#af8260]">
+      <div className=" flex flex-col items-center justify-center md:absolute md:top-1/2 md:left-1/2 md:-translate-y-[50%] md:-translate-x-[50%]">
+        <div className=" p-3 lg:px-10 lg:py-20 rounded-lg container mx-auto bg-[#E4C59E] md:bg-opacity-25 text-[#6D2932]  font-semibold md:border-2 md:shadow-xl md:border-[#af8260]">
           <div>
             <h2 className="text-3xl lg:text-5xl text-center font-bold">Add Craft Item</h2>
-            <p className="lg:w-2/3 lg:mx-auto mt-2 text-center lg:text-lg">
+            <p className="lg:w-2/3 lg:mx-auto mt-2 text-center lg:text-lg md:hidden lg:block">
               Crafting is more than just a hobby; it's a form of artistic expression that allows us to unleash our creativity and transform
               ordinary materials into extraordinary pieces. Our Craft page is a haven for enthusiasts of all levels, offering inspiration,
               tutorials, and resources to ignite your passion for DIY projects.
             </p>
           </div>
 
-          <form onSubmit={handleAddProduct} className="w-4/5 mx-auto mt-10 grid grid-cols-1 lg:grid-cols-2 gap-5 rounded-md font-semibold">
+          <form onSubmit={handleAddProduct} className="w-4/5 mx-auto mt-10 grid grid-cols-1 md:grid-cols-2 gap-5 rounded-md font-semibold">
             <div>
               <p>Item Name:</p>
               <input className="py-2 px-4 w-full" type="text" name="name" required />
