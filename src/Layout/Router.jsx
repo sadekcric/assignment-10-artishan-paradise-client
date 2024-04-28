@@ -63,11 +63,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: (
-          <PrivateRoute>
-            <Details />
-          </PrivateRoute>
-        ),
+        element: <Details />,
         loader: ({ params }) => fetch(`https://artisan-paradise-server.vercel.app/products/${params.id}`),
       },
       {

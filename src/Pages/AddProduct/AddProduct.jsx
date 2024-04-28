@@ -76,7 +76,7 @@ const AddProduct = () => {
 
                 <option value="Portrait Drawing">Portrait Drawing</option>
                 <option value="Watercolor Painting">Watercolor Painting</option>
-                <option value="Oil Painting">Oil Painting:</option>
+                <option value="Oil Painting">Oil Painting</option>
                 <option value="Charcoal Sketching">Charcoal Sketching</option>
                 <option value="Cartoon Drawing">Cartoon Drawing</option>
               </select>
