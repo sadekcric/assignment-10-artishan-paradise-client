@@ -4,7 +4,7 @@ import { CommonContext } from "../../../Layout/CommonRoute";
 import { Link } from "react-router-dom";
 
 const Categories = () => {
-  const { categoryProduct, setCategoryProduct } = useContext(CommonContext);
+  const { setCategoryProduct } = useContext(CommonContext);
 
   const handleCategory = (category) => {
     // console.log("I am Clicked");
@@ -12,8 +12,6 @@ const Categories = () => {
       .then((res) => res.json())
       .then((data) => setCategoryProduct(data));
   };
-
-  console.log(categoryProduct);
 
   return (
     <div className="p-3 container mx-auto">
@@ -26,7 +24,7 @@ const Categories = () => {
       </div>
 
       <div className="grid grid-cols-1 mt-10 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <Link to="/categoryCart" className="">
+        <Link to="/categoryCart">
           <div
             onClick={() => handleCategory("Landscape Painting")}
             className=" hover:-translate-y-2 transition  shadow-xl image-full relative"
@@ -44,7 +42,7 @@ const Categories = () => {
           </div>
         </Link>
 
-        <Link to="/categoryCart" className="card">
+        <Link to="/categoryCart">
           <div
             onClick={() => handleCategory("Portrait Drawing")}
             className=" hover:-translate-y-2 transition  shadow-xl image-full relative"

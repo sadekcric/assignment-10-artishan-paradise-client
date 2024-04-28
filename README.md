@@ -4,11 +4,15 @@ Live Site: [www.artisanparadise.com](https://artisan-paradise-ea42a.firebaseapp.
 
 ## Features:
 
-- **Explore a captivating collection**: Browse through a diverse range of painting and drawing artworks, from stunning landscapes to intricate portraits.
-- **Engage with the community**: Interact with fellow art enthusiasts by leaving comments and liking your favorite pieces.
-- **Discover inspiration and tutorials**: Enhance your skills with helpful tutorials and find new creative ideas.
-- **Purchase original artworks**: Buy directly from artists or commission custom pieces to fit your style.
-- **Join workshops and events**: Participate in online workshops and events to learn new techniques and connect with others.
+- **Explore Diverse Artistic Styles**: Dive into a rich array of painting and drawing categories, including landscape painting, portrait drawing, watercolor painting, oil painting, charcoal sketching, and cartoon drawing.
+
+- **Variety of Artistic Mediums**: Discover artworks created using various mediums such as canvas, pencil sketches, ink outlines, acrylic paint, watercolors, oils, and charcoal.
+
+- **From Realism to Fantasy**: Experience a spectrum of artistic expressions, from realistic portraits to abstract oil paintings, from floral watercolor art to superhero cartoon designs.
+
+- **Artistic Techniques Unveiled**: Delve into the world of artistic techniques with articles and tutorials covering figure charcoal sketches, architectural charcoal drawings, comic strip drawing, and more.
+
+- **Art and Craft Community Hub**: Join a vibrant community of artists and enthusiasts to share insights, discuss techniques, and explore the endless possibilities of painting and drawing.
 
 ## NPM Packages Used:
 
