@@ -4,7 +4,6 @@ import Category from "./Category";
 
 const CategoryCart = () => {
   const { categoryProduct } = useContext(CommonContext);
-  console.log(categoryProduct);
 
   return (
     <div className="container mx-auto p-3 flex flex-col justify-center items-center min-h-[calc(100vh-120px)]">

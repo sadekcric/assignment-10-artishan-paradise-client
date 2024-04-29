@@ -7,7 +7,6 @@ import { CommonContext } from "../../../Layout/CommonRoute";
 
 const CraftItem = ({ product }) => {
   const { category, details, displayName, name, photo, photoURL, price, rating, stock, _id } = product;
-  console.log(_id);
 
   const { loaded, setLoaded, user } = useContext(CommonContext);
 

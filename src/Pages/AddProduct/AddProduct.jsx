@@ -4,70 +4,29 @@ import Swal from "sweetalert2";
 import background from "../../assets/loginBg.png";
 
 const AddProduct = () => {
-  const { user } = useContext(CommonContext);
-  const handleAddProduct = (e) => {
-    e.preventDefault();
-
-    const form = e.target;
-    const name = form.name.value;
-    const price = form.price.value;
-    const category = form.category.value;
-    const rating = form.rating.value;
-    const customization = form.customization.value;
-    const stock = form.stock.value;
-    const details = form.details.value;
-    const photo = form.photo.value;
-    const displayName = user.displayName;
-    const email = user.email;
-    const processingTime = form.processingTime.value;
-    const photoURL = user.photoURL;
-
-    const product = { name, price, rating, category, customization, stock, details, photo, processingTime, displayName, email, photoURL };
-
-    fetch(`https://artisan-paradise-server.vercel.app/products`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(product),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data?.acknowledged) {
-          Swal.fire({
-            icon: "success",
-            title: "Your work has been saved",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          form.reset();
-        }
-      });
-  };
+  const { handleAddProduct } = useContext(CommonContext);
 
   return (
-    <div className="relative py-3">
-      <div className="w-full  hidden md:block">
+    <div className="relative py-3 overflow-y-scroll">
+      <div className="w-full  hidden lg:block">
         <img className="w-full h-full blur-sm opacity-50" src={background} alt="" />
       </div>
-      <div className=" flex flex-col items-center justify-center md:absolute md:top-1/2 md:left-1/2 md:-translate-y-[50%] md:-translate-x-[50%]">
-        <div className=" p-3 lg:px-10 lg:py-20 rounded-lg container mx-auto bg-[#E4C59E] md:bg-opacity-25 text-[#6D2932]  font-semibold md:border-2 md:shadow-xl md:border-[#af8260]">
+      <div className=" flex flex-col items-center justify-center lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-y-[50%] lg:-translate-x-[50%]">
+        <div className=" p-3 lg:px-10 lg:py-20 rounded-lg container mx-auto bg-[#E4C59E] lg:bg-opacity-25 text-[#6D2932]  font-semibold lg:border-2 lg:shadow-xl lg:border-[#af8260]">
           <div>
             <h2 className="text-3xl lg:text-5xl text-center font-bold">Add Craft Item</h2>
-            <p className="lg:w-2/3 lg:mx-auto mt-2 text-center lg:text-lg md:hidden lg:block">
-              Crafting is more than just a hobby; it's a form of artistic expression that allows us to unleash our creativity and transform
-              ordinary materials into extraordinary pieces. Our Craft page is a haven for enthusiasts of all levels, offering inspiration,
-              tutorials, and resources to ignite your passion for DIY projects.
-            </p>
           </div>
 
-          <form onSubmit={handleAddProduct} className="w-4/5 mx-auto mt-10 grid grid-cols-1 md:grid-cols-2 gap-5 rounded-md font-semibold">
-            <div>
+          <form
+            onSubmit={handleAddProduct}
+            className="w-4/5 mx-auto mt-5 grid grid-cols-1 lg:grid-cols-4 gap-5 rounded-lg font-semibold items-center"
+          >
+            <div className="lg:col-span-2">
               <p>Item Name:</p>
               <input className="py-2 px-4 w-full" type="text" name="name" required />
             </div>
 
-            <div>
+            <div className="lg:col-span-2">
               <p>subCategory:</p>
               <select name="category" className="py-2 px-4 w-full" required>
                 <option value=""></option>
@@ -82,17 +41,17 @@ const AddProduct = () => {
               </select>
             </div>
 
-            <div>
+            <div className="lg:col-span-1">
               <p>Rating:</p>
               <input className="py-2 px-4 w-full" type="text" name="rating" required />
             </div>
 
-            <div>
+            <div className="lg:col-span-1">
               <p>Price:</p>
               <input className="py-2 px-4 w-full" type="number" name="price" required />
             </div>
 
-            <div>
+            <div className="lg:col-span-2">
               <p>Customization:</p>
               <select name="customization" className="py-2 px-4 w-full" required>
                 <option value=""></option>
@@ -101,7 +60,12 @@ const AddProduct = () => {
               </select>
             </div>
 
-            <div>
+            <div className="lg:col-span-2">
+              <p>Photo URL:</p>
+              <input className="py-2 px-4 w-full " type="text" name="photo" required />
+            </div>
+
+            <div className="lg:col-span-1">
               <p>Stock Status:</p>
               <select name="stock" className="py-2 px-4 w-full" required>
                 <option value=""></option>
@@ -110,22 +74,17 @@ const AddProduct = () => {
               </select>
             </div>
 
-            <div>
+            <div className="lg:col-span-1">
               <p>Processing Time:</p>
               <input className="py-2 px-4 w-full" type="text" name="processingTime" required />
             </div>
 
-            <div>
-              <p>Photo URL:</p>
-              <input className="py-2 px-4 w-full " type="text" name="photo" required />
-            </div>
-
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-4">
               <p>Details:</p>
               <textarea className="py-2 px-4 w-full" type="text" name="details" required />
             </div>
 
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-4">
               <input className="py-2 px-4 w-full bg-[#AF8260] text-white" type="submit" value="Add Product" />
             </div>
           </form>

@@ -94,7 +94,7 @@ const Nav = () => {
 
   return (
     <>
-      <header className="p-4 dark:bg-gray-100 dark:text-gray-800 bg-[#FFF5E0] relative">
+      <header className="p-4  dark:bg-gray-100 dark:text-gray-800 bg-[#FFF5E0] relative">
         <div className="container flex justify-between h-16 mx-auto">
           <Link to="/" aria-label="Back to homepage" className="flex items-center p-2">
             <button className="text-lg bg-[#AF8260] lg:text-3xl  font-bold pl-3 lg:pl-6 py-3 ">
