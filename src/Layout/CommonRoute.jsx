@@ -96,7 +96,7 @@ const CommonRoute = ({ children }) => {
     });
 
     return () => unSubscribe();
-  }, [products, profileActive]);
+  }, [products, profileActive, categoryProduct]);
 
   // get data from database
   useEffect(() => {

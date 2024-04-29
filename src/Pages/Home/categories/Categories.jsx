@@ -4,13 +4,19 @@ import { CommonContext } from "../../../Layout/CommonRoute";
 import { Link } from "react-router-dom";
 
 const Categories = () => {
-  const { setCategoryProduct } = useContext(CommonContext);
+  const { setCategoryProduct, setLoader } = useContext(CommonContext);
 
   const handleCategory = (category) => {
     // console.log("I am Clicked");
+    setLoader(true);
     fetch(`https://artisan-paradise-server.vercel.app/products-category/${category}`)
       .then((res) => res.json())
-      .then((data) => setCategoryProduct(data));
+      .then((data) => {
+        setCategoryProduct(data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
 
   return (

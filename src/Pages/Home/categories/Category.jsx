@@ -2,9 +2,13 @@ import { Helmet } from "react-helmet-async";
 import PropTypes from "prop-types";
 import { FaStarHalfAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CommonContext } from "../../../Layout/CommonRoute";
 
 const Category = ({ product }) => {
+  const { loader } = useContext(CommonContext);
   const { category, details, displayName, name, photo, photoURL, price, rating, stock, _id } = product;
+
   return (
     <div>
       <div className="goldenText goldenBG2 border-4 border-transparent hover:border-[#FFF5E0] transition rounded-lg">
