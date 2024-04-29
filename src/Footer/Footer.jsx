@@ -98,9 +98,9 @@ const Footer = () => {
               <div className="uppercase dark:text-gray-900">Social media</div>
               <div className="flex justify-start space-x-3">
                 <a
-                  rel="noopener noreferrer"
-                  href="#https://www.facebook.com/sadekur.rahman.73744"
                   target="blank"
+                  rel="noopener noreferrer"
+                  href="https://www.facebook.com/sadekur.rahman.73744"
                   title="Facebook"
                   className="flex items-center p-1"
                 >
