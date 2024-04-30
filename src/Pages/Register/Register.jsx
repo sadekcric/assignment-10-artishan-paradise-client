@@ -98,7 +98,7 @@ const Register = () => {
             return Swal.fire({
               title: "Error!",
               text: err.message,
-              icon: err.message,
+              icon: "error",
               confirmButtonText: "Back",
             });
           });
@@ -107,8 +107,8 @@ const Register = () => {
         setLoader(false);
         return Swal.fire({
           title: "Error!",
-          text: "Password must be up to 6 correcter!",
-          icon: err.message,
+          text: err.message,
+          icon: "error",
           confirmButtonText: "Back",
         });
       });
