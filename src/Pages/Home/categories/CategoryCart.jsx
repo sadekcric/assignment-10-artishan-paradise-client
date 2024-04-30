@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const CategoryCart = ({ product }) => {
-  const { photoURL, displayName, rating, stock, photo, category, price, details, _id } = product;
+  const { photoURL, displayName, rating, stock, photo, category, price, details, _id, name } = product;
   return (
     <div>
       <div className="goldenText goldenBG2  transition rounded-lg min-h-[600px]">
