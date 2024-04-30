@@ -1,9 +1,19 @@
-import { useContext } from "react";
-import { CommonContext } from "../../../Layout/CommonRoute";
+import { useEffect, useState } from "react";
 import CraftItem from "./CraftItem";
 
 const CraftItems = () => {
-  const { products } = useContext(CommonContext);
+  // const { products } = useContext(CommonContext);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("https://artisan-paradise-server.vercel.app/products")
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   const newProducts = [...products].reverse();
 
   const sliceProduct = newProducts.slice(0, 6);

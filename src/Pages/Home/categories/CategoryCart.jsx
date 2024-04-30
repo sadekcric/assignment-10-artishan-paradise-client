@@ -4,6 +4,7 @@ import Category from "./Category";
 
 const CategoryCart = () => {
   const { categoryProduct, loader } = useContext(CommonContext);
+  console.log(categoryProduct);
 
   if (loader) {
     return (

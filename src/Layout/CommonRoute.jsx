@@ -91,8 +91,8 @@ const CommonRoute = ({ children }) => {
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setLoader(false);
       setUser(currentUser);
+      setLoader(false);
     });
 
     return () => unSubscribe();
