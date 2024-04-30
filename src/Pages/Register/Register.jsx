@@ -97,7 +97,7 @@ const Register = () => {
             setLoader(false);
             return Swal.fire({
               title: "Error!",
-              text: "Password must be up to 6 correcter!",
+              text: err.message,
               icon: err.message,
               confirmButtonText: "Back",
             });
