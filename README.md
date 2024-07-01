@@ -13,4 +13,6 @@ Explore diverse artistic styles and mediums, from landscapes to portraits, using
 **React, Tainwind-css, Firebase-auth, mongodb, express, sweetalert2 etc**
 
 ## Run Step:
-**1. **
+**1. git clone https://github.com/sadekcric/assignment-10-artishan-paradise-client.git**
+**2. cd folder-name**
+**3. npm install**
