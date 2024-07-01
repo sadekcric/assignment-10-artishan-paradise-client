@@ -9,7 +9,7 @@ Explore diverse artistic styles and mediums, from landscapes to portraits, using
 - Discover artworks created using various mediums such as canvas, pencil sketches, ink outlines, acrylic paint, watercolors, oils, and charcoal.
 - Join a vibrant community of artists and enthusiasts to share insights, discuss techniques, and explore the endless possibilities of painting and drawing.
 
-## Use Technology in Projects:
+## Used Technology in Projects:
 **React, Tainwind-css, Firebase-auth, mongodb, express, sweetalert2 etc**
 
 ## Run Step:
